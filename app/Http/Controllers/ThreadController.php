@@ -5,6 +5,8 @@ namespace laravelTest\Http\Controllers;
 use Illuminate\Http\Request;
 use laravelTest\Thread;
 use laravelTest\Post;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class ThreadController extends Controller
 {
