@@ -38,8 +38,10 @@ class ThreadController extends Controller
         ]);
     }
 
-    public function assignCallname()
+    public function assignCallname($thread_id)
     {
+        $callnames = config('_custom.callnames'); // Available Callnames
+        $used_callnames = Callname::where('thread', $thread_id)->get();
 
     }
 
