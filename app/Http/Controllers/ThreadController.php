@@ -4,6 +4,7 @@ namespace laravelTest\Http\Controllers;
 
 use Illuminate\Http\Request;
 use laravelTest\Thread;
+use laravelTest\Post;
 
 class ThreadController extends Controller
 {
@@ -45,6 +46,7 @@ class ThreadController extends Controller
         // Validating
         $validator = Validator::make($request->all(), [
             'body' => 'required|max:1000',
+            'thread' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -54,11 +56,11 @@ class ThreadController extends Controller
         }
 
         // Creating post
-        $thread = new Thread;
-        $thread->title = $request->title;
-        $thread->body = $request->body;
-        $thread->author = Auth::id();
-        $thread->save();
+        $post = new Post;
+        $post->body = $request->body;
+        $post->thread = $request->thread;
+        $post->author = Auth::id();
+        $post->save();
 
         return back();
     }

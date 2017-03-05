@@ -30,6 +30,8 @@
                                 <label for="body" class="col-md-1 control-label">Body</label>
 
                                 <div class="col-md-11">
+                                    <input type="hidden" name="thread" value="{{ $thread->id }}">
+
                                     <textarea id="body" class="form-control" name="body" rows="3" required>{{ old('body') }}</textarea>
 
                                     @if ($errors->has('body'))
