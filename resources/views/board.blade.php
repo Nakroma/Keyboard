@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <a href="#"><button type="button" class="btn btn-default btn-block">Create Thread</button></a>
+            <a href="/thread"><button type="button" class="btn btn-default btn-block">Create Thread</button></a>
         </div>
         <div class="col-md-8">
 
