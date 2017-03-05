@@ -5,6 +5,7 @@ namespace laravelTest\Http\Controllers;
 use Illuminate\Http\Request;
 use laravelTest\Thread;
 use laravelTest\Post;
+use laravelTest\Callname;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use laravelTest\Providers\CallnameService;
@@ -33,9 +34,18 @@ class ThreadController extends Controller
         $thread = Thread::where('id', $id)->first();
         $posts = Post::where('thread', $id)->get();
 
+        // Create callname array
+        $raw_callnames = Callname::where('thread', $id)->get();
+        $string_callnames = config('_custom.callnames');
+        $callnames = [];
+        foreach($raw_callnames as $raw) {
+            $callnames[$raw->author] = $string_callnames[$raw->callname];
+        }
+
         return view('view_thread', [
             'thread' => $thread,
-            'posts' => $posts
+            'posts' => $posts,
+            'callnames' => $callnames,
         ]);
     }
 
