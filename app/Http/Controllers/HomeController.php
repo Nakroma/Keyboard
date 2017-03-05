@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use laravelTest\Thread;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use laravelTest\Providers\CallnameService;
 
 class HomeController extends Controller
 {
@@ -70,6 +71,9 @@ class HomeController extends Controller
         $thread->body = $request->body;
         $thread->author = Auth::id();
         $thread->save();
+
+        // Create callname
+        CallnameService::assignCallname($thread->id);
 
         return redirect('board');
     }
