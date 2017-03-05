@@ -28,6 +28,8 @@ class CallnameService
 
         // Iterate through used callnames and remove them from available ones
         foreach ($used_callnames as $cn) {
+            if ($cn->author == Auth::id())
+                return;
             if ($cn->callname >= 0)
                 unset($callnames[$cn->callname]);
         }

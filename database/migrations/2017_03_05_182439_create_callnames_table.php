@@ -19,7 +19,7 @@ class CreateCallnamesTable extends Migration
             $table->unsignedInteger('author');  // Author ID
             $table->unsignedInteger('thread');  // Thread ID
             $table->integer('callname');        // Callname ID
-            $table->string('custom_id');        // Custom ID if needed
+            $table->string('custom_id')->default('');        // Custom ID if needed
 
             $table->timestamps();               // Created/Updated at
         });
