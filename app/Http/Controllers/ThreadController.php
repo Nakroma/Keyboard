@@ -33,4 +33,33 @@ class ThreadController extends Controller
             'thread' => $thread
         ]);
     }
+
+    /**
+     * Creates a new post.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function createPost(Request $request)
+    {
+        // Validating
+        $validator = Validator::make($request->all(), [
+            'body' => 'required|max:1000',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        // Creating post
+        $thread = new Thread;
+        $thread->title = $request->title;
+        $thread->body = $request->body;
+        $thread->author = Auth::id();
+        $thread->save();
+
+        return back();
+    }
 }

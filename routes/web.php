@@ -24,3 +24,4 @@ Route::post('thread', 'HomeController@createThread');
 
 /* Thread routes */
 Route::get('thread/{id}', 'ThreadController@index');
+Route::post('post', 'ThreadController@createPost');
