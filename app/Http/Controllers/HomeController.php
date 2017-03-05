@@ -3,6 +3,7 @@
 namespace laravelTest\Http\Controllers;
 
 use Illuminate\Http\Request;
+use laravelTest\Thread;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('board');
+        // Pass threads to view
+        $threads = Thread::orderBy('created_at', 'asc')->get();
+
+        return view('board', [
+            'threads' => $threads
+        ]);
     }
 }
