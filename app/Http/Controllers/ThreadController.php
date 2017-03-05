@@ -43,6 +43,10 @@ class ThreadController extends Controller
         $callnames = config('_custom.callnames'); // Available Callnames
         $used_callnames = Callname::where('thread', $thread_id)->get();
 
+        // Iterate through used callnames and remove them from available ones
+        foreach ($used_callnames as $cn) {
+
+        }
     }
 
     /**
