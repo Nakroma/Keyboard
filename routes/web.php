@@ -17,4 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+/* Main board routes */
 Route::get('/board', 'HomeController@index');
+Route::post('/thread', 'HomeController@createThread');

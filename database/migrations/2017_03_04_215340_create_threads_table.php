@@ -17,8 +17,8 @@ class CreateThreadsTable extends Migration
             $table->increments('id');           // Thread ID
 
             $table->unsignedInteger('author');  // Author ID
-            $table->string('topic');            // Thread title
-            $table->string('content');          // Content
+            $table->string('title');            // Thread title
+            $table->string('body');          // Content
 
             $table->timestamps();               // Created/Updated at
         });
