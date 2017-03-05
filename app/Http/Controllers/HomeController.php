@@ -35,13 +35,24 @@ class HomeController extends Controller
     }
 
     /**
-     * Create a new thread
+     * Show the thread creation form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function threadForm()
+    {
+        return view('thread');
+    }
+
+    /**
+     * Create a new thread.
      *
      * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @return \Illuminate\Http\Response
      */
     public function createThread(Request $request)
     {
+        // Validating
         $validator = Validator::make($request->all(), [
             'topic' => 'required|max:255',
             'content' => 'required|max:5000',
@@ -53,12 +64,12 @@ class HomeController extends Controller
                 ->withErrors($validator);
         }
 
+        // Creating thread
         $thread = new Thread;
         $thread->title = $request->title;
         $thread->body = $request->body;
         $thread->author = Auth::id();
         $thread->save();
-
 
         return redirect('/board');
     }
