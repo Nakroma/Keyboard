@@ -27,7 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         // Pass threads to view
-        $threads = Thread::orderBy('created_at', 'asc')->get();
+        $threads = Thread::orderBy('updated_at', 'desc')->get();
 
         return view('board', [
             'threads' => $threads
