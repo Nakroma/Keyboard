@@ -19,6 +19,21 @@
                     </div>
                 </div>
 
+                <!-- Posts -->
+                @if (count($posts) > 0)
+                <div class="panel panel-default">
+                    <div class="panel-body"> <!-- TODO: Remove this hack -->
+                        @foreach ($posts as $post)
+                            <div class="panel panel-default" style="margin-bottom:5px;">
+                                <div class="panel-body">
+                                    {{ $post->body }}
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
+
                 <!-- Post field -->
                 <div class="panel panel-default">
                     <div class="panel-heading">Create Post</div>

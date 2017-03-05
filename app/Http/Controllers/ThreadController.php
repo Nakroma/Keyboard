@@ -30,10 +30,11 @@ class ThreadController extends Controller
     {
         // Pass thread and answers to view
         $thread = Thread::where('id', $id)->first();
-        // $posts = Post::where('thread_id', $id)->get();
+        $posts = Post::where('thread', $id)->get();
 
         return view('view_thread', [
-            'thread' => $thread
+            'thread' => $thread,
+            'posts' => $posts
         ]);
     }
 
