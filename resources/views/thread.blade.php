@@ -10,7 +10,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Create Thread</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ url('/thread') }}">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ url('thread') }}">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -31,7 +31,7 @@
                                 <label for="body" class="col-md-1 control-label">Body</label>
 
                                 <div class="col-md-11">
-                                    <textarea id="body" class="form-control" name="body" rows="5" required></textarea>
+                                    <textarea id="body" class="form-control" name="body" rows="5" required>{{ old('body') }}</textarea>
 
                                     @if ($errors->has('body'))
                                         <span class="help-block">

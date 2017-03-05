@@ -54,12 +54,12 @@ class HomeController extends Controller
     {
         // Validating
         $validator = Validator::make($request->all(), [
-            'topic' => 'required|max:255',
-            'content' => 'required|max:5000',
+            'title' => 'required|max:255',
+            'body' => 'required|max:5000',
         ]);
 
         if ($validator->fails()) {
-            return redirect('/thread')
+            return redirect('thread')
                 ->withInput()
                 ->withErrors($validator);
         }
@@ -71,6 +71,6 @@ class HomeController extends Controller
         $thread->author = Auth::id();
         $thread->save();
 
-        return redirect('/board');
+        return redirect('board');
     }
 }
