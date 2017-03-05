@@ -38,6 +38,11 @@ class ThreadController extends Controller
         ]);
     }
 
+    public function assignCallname()
+    {
+
+    }
+
     /**
      * Creates a new post.
      *
