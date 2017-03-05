@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
 
             $table->unsignedInteger('author');  // Author ID
             $table->unsignedInteger('thread');  // Thread ID
-            $table->string('body');             // Content
+            $table->text('body');             // Content
 
             $table->timestamps();               // Created/Updated at
         });
