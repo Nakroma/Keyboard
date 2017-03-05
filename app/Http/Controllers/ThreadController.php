@@ -5,6 +5,7 @@ namespace laravelTest\Http\Controllers;
 use Illuminate\Http\Request;
 use laravelTest\Thread;
 use laravelTest\Post;
+use laravelTest\Callname;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,13 +41,22 @@ class ThreadController extends Controller
 
     public function assignCallname($thread_id)
     {
+        $callname = uniqid();
+
         $callnames = config('_custom.callnames'); // Available Callnames
         $used_callnames = Callname::where('thread', $thread_id)->get();
 
         // Iterate through used callnames and remove them from available ones
         foreach ($used_callnames as $cn) {
-
+            if ($cn->callname >= 0)
+                unset($callnames[$cn->callname]);
         }
+
+        // Assign ID if no callnames left, otherwise assign callname
+        if (count($callnames) > 0)
+            $callname = array_rand($callnames);
+
+        return $callname;
     }
 
     /**
