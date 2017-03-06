@@ -13,7 +13,7 @@
             <div class="col-md-8">
                 <!-- Thread header -->
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{ $thread->title }} <i>by {{ $callnames[$thread->author] }}</i></div>
+                    <div class="panel-heading">{{ $thread->title }} <small>by {{ $callnames[$thread->author] }} @ {{ $thread->created_at }}</small></div>
                     <div class="panel-body">
                         {{ $thread->body }}
                     </div>
@@ -25,7 +25,7 @@
                     <div class="panel-body"> <!-- TODO: Remove this hack -->
                         @foreach ($posts as $post)
                             <div class="panel panel-default" style="margin-bottom:5px;">
-                                <div class="panel-heading">{{ $callnames[$post->author] }}</div>
+                                <div class="panel-heading"><small>{{ $callnames[$post->author] }} @ {{ $post->created_at }}</small></div>
                                 <div class="panel-body">
                                     {{ $post->body }}
                                 </div>
