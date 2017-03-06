@@ -46,6 +46,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('key') ? ' has-error' : '' }}">
+                            <label for="key" class="col-md-4 control-label">Key</label>
+
+                            <div class="col-md-6">
+                                <input id="key" type="text" class="form-control" name="key" required>
+
+                                @if ($errors->has('key'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('key') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">

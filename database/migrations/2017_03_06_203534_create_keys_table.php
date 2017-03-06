@@ -22,6 +22,14 @@ class CreateKeysTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        // Insert admin key
+        DB::table('keys')->insert(
+            array(
+                'key_value' => 'ADMIN_KEY',
+                'used' => false
+            )
+        );
     }
 
     /**
