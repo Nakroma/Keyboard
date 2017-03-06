@@ -3,6 +3,7 @@
 namespace laravelTest\Http\Controllers\Auth;
 
 use laravelTest\User;
+use laravelTest\Key;
 use laravelTest\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -47,10 +48,21 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'key' => 'required|min:5',
         ]);
+
+        // Check key
+        $validator->after(function ($validator, $data) {
+            $getKey = Key::where('key_value', $data['key'])->get();
+            if ((count($getKey) == 0) || ($getKey[0]['used'])) {
+                $validator->errors()->add('key', 'Key is either wrong or already used.');
+            }
+        });
+
+        return $validator;
     }
 
     /**
@@ -61,9 +73,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        // Generate key
+        $raw_key = md5(microtime().rand());
+        $key = new Key;
+        $key->key_value = $raw_key;
+        $key->save();
+
         return User::create([
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
+            'key_id' => $key->id,
         ]);
     }
 }
