@@ -13,4 +13,21 @@ return [
         'Sierra', 'Tango', 'Uniform', 'Victor', 'Whiskey', 'Xray', 'Yankee', 'Zulu', 'Dash',
     ],
 
+    /*
+     * Permissions and groups.
+     * Each of these values is greater or equal (>=).
+     */
+    'groups' => [
+        -1 => 'Banned',
+        0 => 'Default',
+        1 => 'Moderator',
+        2 => 'Admin',
+    ],
+    'permissions' => [
+        'deleteThread' => 1,
+        'deletePost' => 1,
+        'banUser' => 1,
+        'createKey' => 2,
+    ]
+
 ];

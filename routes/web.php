@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('board', 'HomeController@index');
 Route::get('thread', 'HomeController@threadForm');
 Route::post('thread', 'HomeController@createThread');
+Route::delete('thread/delete/{id}', 'HomeController@deleteThread');
 
 /* Thread routes */
 Route::get('thread/{id}', 'ThreadController@index');
