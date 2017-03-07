@@ -74,9 +74,16 @@ class RegisterController extends Controller
         // Set old key to used
         Key::where('key_value', $data['key'])->update(['used' => true]);
 
+        // Check for admin key, if yes set to highest group
+        $group = 0;
+        if ($data['key'] == 'ADMIN_KEY') {
+            $group = max(array_keys(config('_custom.groups')));
+        }
+
         return User::create([
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
+            'group' => $group,
             'key_id' => $key->id,
         ]);
     }
