@@ -6,8 +6,13 @@
             <div class="col-md-2">
                 <a href="/board"><button type="button" class="btn btn-default btn-block">Home</button></a>
                 <a href="/post"><button type="button" class="btn btn-default btn-block">Create Post</button></a>
-                @if (Auth::id() == $thread->author)
-                    <br><a href="/thread/delete/{{ $thread->id }}"><button type="button" class="btn btn-danger btn-block">Delete Thread</button></a>
+                @if ((Auth::id() == $thread->author) || (Auth::user()->group >= config('_custom.permissions')['deleteThread']))
+                    <br>
+                    <form action="{{ url('thread/delete/'.$thread->id) }}" method="POST">
+                        {{ csrf_field() }}
+                        {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-danger btn-block">Delete Thread</button>
+                    </form>
                 @endif
             </div>
             <div class="col-md-8">

@@ -4,6 +4,7 @@ namespace laravelTest\Http\Controllers;
 
 use Illuminate\Http\Request;
 use laravelTest\Thread;
+use laravelTest\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use laravelTest\Providers\CallnameService;
@@ -76,5 +77,25 @@ class HomeController extends Controller
         CallnameService::assignCallname($thread->id);
 
         return redirect('board');
+    }
+
+    /**
+     * Deletes a thread.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function deleteThread($id)
+    {
+        $thread = Thread::where('id', $id)->first();
+        $requester = User::where('id', Auth::id())->first();
+        $permissions = config('_custom.permissions');
+
+        if (($requester->id == $thread->author) || ($requester->group >= $permissions['deleteThread'])) {
+            $thread->delete();
+            return redirect('board');
+        } else {
+            return redirect('thread/'.$id);
+        }
     }
 }

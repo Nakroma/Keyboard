@@ -27,6 +27,7 @@ return [
         'deleteThread' => 1,
         'deletePost' => 1,
         'banUser' => 1,
+        'promoteUser' => 2,
         'createKey' => 2,
     ]
 
