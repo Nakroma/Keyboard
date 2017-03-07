@@ -26,3 +26,6 @@ Route::delete('thread/delete/{id}', 'HomeController@deleteThread');
 /* Thread routes */
 Route::get('thread/{id}', 'ThreadController@index');
 Route::post('post', 'ThreadController@createPost');
+
+/* Profile routes */
+Route::get('profile', 'ProfileController@index');
