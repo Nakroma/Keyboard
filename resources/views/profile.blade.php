@@ -12,7 +12,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Profile</div>
                     <div class="panel-body">
-                        Here is shit
+                        <b>Username:</b> {{ $user->username }}<br>
+                        <b>Personal Key:</b> {{ $key->key_value }} @if($key->used)
+                            <span class="label label-danger">Used</span>@else
+                            <span class="label label-success">Available</span>@endif<br>
+                        <b>Group:</b> {{ config('_custom.groups')[$user->group] }}<br>
+                        <b>Joined in:</b> {{ $user->created_at }}
                     </div>
                 </div>
 

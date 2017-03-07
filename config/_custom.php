@@ -19,7 +19,7 @@ return [
      */
     'groups' => [
         -1 => 'Banned',
-        0 => 'Default',
+        0 => 'User',
         1 => 'Moderator',
         2 => 'Admin',
     ],

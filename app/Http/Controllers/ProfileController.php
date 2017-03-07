@@ -3,6 +3,8 @@
 namespace laravelTest\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use laravelTest\Key;
 
 class ProfileController extends Controller
 {
@@ -13,6 +15,11 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('profile');
+        $key = Key::where('id', Auth::user()->key_id)->first();
+
+        return view('profile', [
+            'user' => Auth::user(),
+            'key' => $key,
+        ]);
     }
 }
