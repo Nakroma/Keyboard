@@ -20,7 +20,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">{{ $thread->title }} <small>by {{ $callnames[$thread->author] }} @ {{ $thread->created_at }}</small></div>
                     <div class="panel-body">
-                        {{ $thread->body }}
+                        {!! nl2br(e($thread->body)) !!}
                     </div>
                 </div>
 
@@ -32,7 +32,7 @@
                             <div class="panel panel-default" style="margin-bottom:5px;">
                                 <div class="panel-heading"><small>{{ $callnames[$post->author] }} @ {{ $post->created_at }}</small></div>
                                 <div class="panel-body">
-                                    {{ $post->body }}
+                                    {!! nl2br(e($post->body)) !!}
                                 </div>
                             </div>
                         @endforeach
