@@ -51,16 +51,8 @@ class RegisterController extends Controller
         $validator = Validator::make($data, [
             'username' => 'required|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'key' => 'required|min:5',
+            'key' => 'required|min:5|serial',
         ]);
-
-        // Check key
-        $validator->after(function ($validator, $data) {
-            $getKey = Key::where('key_value', $data['key'])->get();
-            if ((count($getKey) == 0) || ($getKey[0]['used'])) {
-                $validator->errors()->add('key', 'Key is either wrong or already used.');
-            }
-        });
 
         return $validator;
     }
@@ -78,6 +70,9 @@ class RegisterController extends Controller
         $key = new Key;
         $key->key_value = $raw_key;
         $key->save();
+
+        // Set old key to used
+        Key::where('key_value', $data['key'])->update(['used' => true]);
 
         return User::create([
             'username' => $data['username'],

@@ -4,6 +4,8 @@ namespace laravelTest\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Validator;
+use laravelTest\Key;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        // Key validation
+        Validator::extend('serial', function($attribute, $value, $parameters, $validator) {
+            $getKey = Key::where('key_value', $value)->get();
+            return ((count($getKey) > 0) && !$getKey[0]['used']);
+        });
     }
 
     /**
