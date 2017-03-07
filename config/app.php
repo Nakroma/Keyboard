@@ -138,6 +138,11 @@ return [
     'providers' => [
 
         /*
+         * Custom Providers
+         */
+        Golonka\BBCode\BBCodeParserServiceProvider::class,  // BB Code Parser
+
+        /*
          * Laravel Framework Service Providers...
          */
         Illuminate\Auth\AuthServiceProvider::class,
@@ -191,6 +196,7 @@ return [
     */
 
     'aliases' => [
+        'BBCode' => Golonka\BBCode\Facades\BBCodeParser::class,
 
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
