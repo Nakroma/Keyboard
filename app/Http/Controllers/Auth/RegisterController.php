@@ -84,8 +84,7 @@ class RegisterController extends Controller
             'username' => $data['username'],
             'password' => bcrypt($data['password']),
             'group' => $group,
-            'key_id' => $key->id,
-            'last_login' => date('Y-m-d H:i:s'),
+            'key_id' => $key->id
         ]);
     }
 }

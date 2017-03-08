@@ -15,7 +15,12 @@
                     <div class="panel-body">
                         <div class="list-group">
                             @foreach ($threads as $thread)
-                                <a href="/thread/{{ $thread->id }}" class="list-group-item">{{ $thread->title }}<small>{{ $thread->created_at->format('Y-m-d') }}</small></a>
+                                <a href="/thread/{{ $thread->id }}" class="list-group-item">
+                                    @if ($thread->new_posts)
+                                        <span class="label label-primary">New</span>
+                                    @endif
+                                    {{ $thread->title }}<small>{{ $thread->created_at->format('Y-m-d') }}</small>
+                                </a>
                             @endforeach
                         </div>
 

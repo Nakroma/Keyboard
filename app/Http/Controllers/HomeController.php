@@ -5,6 +5,7 @@ namespace laravelTest\Http\Controllers;
 use Illuminate\Http\Request;
 use laravelTest\Thread;
 use laravelTest\User;
+use laravelTest\Visit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use laravelTest\Providers\CallnameService;
@@ -30,6 +31,21 @@ class HomeController extends Controller
     {
         // Pass threads to view
         $threads = Thread::orderBy('last_post', 'desc')->paginate(config('_custom.threadPagination'));
+
+        // Check if new posts are in the thread
+        foreach ($threads as $th) {
+            $visits = Visit::where([
+                ['author', '=', Auth::id()],
+                ['thread', '=', $th->id],
+            ])->get();
+
+            $th->new_posts = true;
+            if (count($visits) > 0) {
+                if ($visits[0]->updated_at >= $th->last_post) {
+                    $th->new_posts = false;
+                }
+            }
+        }
 
         return view('board', [
             'threads' => $threads

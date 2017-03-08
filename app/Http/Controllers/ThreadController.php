@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use laravelTest\Thread;
 use laravelTest\Post;
 use laravelTest\Callname;
+use laravelTest\Visit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use laravelTest\Providers\CallnameService;
@@ -50,6 +51,23 @@ class ThreadController extends Controller
         $callnames = [];
         foreach($raw_callnames as $raw) {
             $callnames[$raw->author] = $string_callnames[$raw->callname];
+        }
+
+        // Create or update visit
+        $visit = Visit::where([
+            ['thread', '=', $id],
+            ['author', '=', Auth::id()],
+        ])->get();
+        if (count($visit) > 0) {
+            Visit::where([
+                ['thread', '=', $id],
+                ['author', '=', Auth::id()],
+            ])->update(['updated_at' => date("Y-m-d H:i:s")]);
+        } else {
+            $v = new Visit;
+            $v->thread = $id;
+            $v->author = Auth::id();
+            $v->save();
         }
 
         return view('view_thread', [
