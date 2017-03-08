@@ -2,6 +2,7 @@
     max-width: 100%;
 }
 
+.panel-heading .del-post,
 .panel-body .list-group .list-group-item small {
     float: right;
 }
