@@ -93,7 +93,7 @@ class HomeController extends Controller
         // Create callname
         CallnameService::assignCallname($thread->id);
 
-        return redirect('board');
+        return redirect('thread/'.$thread->id);
     }
 
     /**
