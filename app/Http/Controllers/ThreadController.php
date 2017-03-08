@@ -9,6 +9,7 @@ use laravelTest\Callname;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use laravelTest\Providers\CallnameService;
+use Golonka\BBCode\Facades\BBCodeParser;
 
 class ThreadController extends Controller
 {
@@ -33,6 +34,15 @@ class ThreadController extends Controller
         // Pass thread and answers to view
         $thread = Thread::where('id', $id)->first();
         $posts = Post::where('thread', $id)->get();
+
+        // Escape and print BB Code
+        $thread->body = htmlspecialchars($thread->body);
+        $thread->body = BBCodeParser::parse($thread->body);
+        // Do the same for all posts
+        foreach($posts as $p) {
+            $p->body = htmlspecialchars($p->body);
+            $p->body = BBCodeParser::parse($p->body);
+        }
 
         // Create callname array
         $raw_callnames = Callname::where('thread', $id)->get();
