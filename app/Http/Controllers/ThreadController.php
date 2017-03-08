@@ -33,7 +33,7 @@ class ThreadController extends Controller
     {
         // Pass thread and answers to view
         $thread = Thread::where('id', $id)->first();
-        $posts = Post::where('thread', $id)->get();
+        $posts = Post::where('thread', $id)->paginate(config('_custom.postPagination'));
 
         // Escape and print BB Code
         $thread->body = htmlspecialchars($thread->body);

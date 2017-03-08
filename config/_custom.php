@@ -3,6 +3,12 @@
 return [
 
     /*
+     * Pagination limits (items pro page).
+     */
+    'threadPagination' => 15,
+    'postPagination' => 15,
+
+    /*
      * Callnames used for each thread.
      * In each thread, each poster gets assigned a random callname used here.
      */

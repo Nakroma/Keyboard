@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         // Pass threads to view
-        $threads = Thread::orderBy('updated_at', 'desc')->paginate(15);
+        $threads = Thread::orderBy('updated_at', 'desc')->paginate(config('_custom.threadPagination'));
 
         return view('board', [
             'threads' => $threads
