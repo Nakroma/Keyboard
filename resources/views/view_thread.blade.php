@@ -5,7 +5,6 @@
         <div class="row">
             <div class="col-md-2">
                 <a href="/board"><button type="button" class="btn btn-default btn-block">Home</button></a>
-                <a href="/post"><button type="button" class="btn btn-default btn-block">Create Post</button></a>
                 @if ((Auth::id() == $thread->author) || (Auth::user()->group >= config('_custom.permissions')['deleteThread']))
                     <br>
                     <form action="{{ url('thread/delete/'.$thread->id) }}" method="POST">
