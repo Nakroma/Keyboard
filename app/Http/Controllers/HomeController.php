@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         // Pass threads to view
-        $threads = Thread::orderBy('updated_at', 'desc')->paginate(config('_custom.threadPagination'));
+        $threads = Thread::orderBy('last_post', 'desc')->paginate(config('_custom.threadPagination'));
 
         return view('board', [
             'threads' => $threads
@@ -71,6 +71,7 @@ class HomeController extends Controller
         $thread->title = $request->title;
         $thread->body = $request->body;
         $thread->author = Auth::id();
+        $thread->last_post = date("Y-m-d H:i:s", time());
         $thread->save();
 
         // Create callname

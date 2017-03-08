@@ -88,6 +88,9 @@ class ThreadController extends Controller
         $post->author = Auth::id();
         $post->save();
 
+        // Update thread last_post time
+        Thread::where('id', $request->thread)->update(['last_post' => date("Y-m-d H:i:s", time())]);
+
         // Create callname
         CallnameService::assignCallname($request->thread);
 
