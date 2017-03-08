@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'laravelTest\Events\SomeEvent' => [
-            'laravelTest\Listeners\EventListener',
+        'Illuminate\Auth\Events\Login' => [
+            'laravelTest\Listeners\LogSuccessfulLogin',
         ],
     ];
 

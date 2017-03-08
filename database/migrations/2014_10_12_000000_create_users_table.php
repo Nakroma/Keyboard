@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('group')->default(0);
             $table->unsignedInteger('key_id');
+            $table->timestamp('last_login')->useCurrent();
 
             $table->rememberToken();
             $table->timestamps();

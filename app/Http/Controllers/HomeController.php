@@ -71,7 +71,7 @@ class HomeController extends Controller
         $thread->title = $request->title;
         $thread->body = $request->body;
         $thread->author = Auth::id();
-        $thread->last_post = date("Y-m-d H:i:s", time());
+        $thread->last_post = date("Y-m-d H:i:s");
         $thread->save();
 
         // Create callname
