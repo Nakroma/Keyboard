@@ -114,4 +114,17 @@ class ThreadController extends Controller
 
         return back();
     }
+
+    public function deletePost($id)
+    {
+        $post = Post::where('id', $id)->first();
+        $permissions = config('_custom.permissions');
+
+        if (Auth::user()->group >= $permissions['deletePost']) {
+            $post->delete();
+            return redirect('thread/'.$post->thread);
+        } else {
+            return redirect('board');
+        }
+    }
 }

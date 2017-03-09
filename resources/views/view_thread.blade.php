@@ -31,7 +31,7 @@
                             <div class="panel panel-default" style="margin-bottom:5px;">
                                 <div class="panel-heading"><small>{{ $callnames[$post->author] }} @ {{ $post->created_at }}
                                     @if (Auth::user()->group >= config('_custom.permissions')['deletePost'])
-                                        <a href="post/delete/{{ $post->id }}" class="del-post">Delete</a>
+                                        <a href="/post/delete/{{ $post->id }}" class="del-post">Delete</a>
                                     @endif
                                     </small></div>
                                 <div class="panel-body">
