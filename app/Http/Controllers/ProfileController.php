@@ -40,6 +40,7 @@ class ProfileController extends Controller
             'key' => $key,
             'mod_area' => $moderationArea,
             'prm' => $prm,
+            'groups' => config('_custom.groups'),
         ]);
     }
 
@@ -72,6 +73,41 @@ class ProfileController extends Controller
                 ['callname', '=', $key],
             ])->first();
             User::where('id', $callname->author)->update(['group' => min(array_keys(config('_custom.groups')))]);
+        }
+
+        return back();
+    }
+
+    /**
+     * Promotes a user to either a group under you or the same one you have.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function promoteUser(Request $request)
+    {
+        // Validating
+        $validator = Validator::make($request->all(), [
+            'group' => 'required',
+            'username' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        $groups = config('_custom.groups');
+        $group = 0;
+        if (is_numeric($request->group)) {
+            $group = $request->group;
+        } else {
+            $group = array_search($request->group, $groups);
+        }
+
+        if ($group <= Auth::user()->group && Auth::user()->group >= config('_custom.permissions')['promoteUser']) {
+            User::where('username', $request->username)->update(['group' => $group]);
         }
 
         return back();

@@ -98,10 +98,31 @@
 
                                 </form>
                             @endif
+
+                            <!-- Group overview TODO/IDEA: Add how many users are in each group -->
+                            @if ($user->group >= $prm['promoteUser'])
+                                <br>
+                                <table class="table">
+                                    <caption>Group Overview</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Group Name</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($groups as $key => $grp)
+                                            <tr>
+                                                <td>{{ $key }}</td>
+                                                <td>{{ $grp }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            @endif
                         </div>
                     </div>
                 @endif
-
             </div>
         </div>
     </div>

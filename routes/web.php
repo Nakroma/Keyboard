@@ -31,3 +31,4 @@ Route::get('post/delete/{id}', 'ThreadController@deletePost');  // Really a dele
 /* Profile routes */
 Route::get('profile', 'ProfileController@index');
 Route::post('user/ban', 'ProfileController@banUser');
+Route::post('user/promote', 'ProfileController@promoteUser');
