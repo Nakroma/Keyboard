@@ -52,6 +52,32 @@
 
                                 </form>
                             @endif
+                            @if ($user->group >= $prm['promoteUser'])
+                                <form class="form-horizontal" role="form" method="POST" action="{{ url('user/promote') }}">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group" style="text-align: right;">
+                                        <div class="col-md-2">
+                                            <label for="group" class="control-label">Group</label>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input id="group" type="text" class="form-control" name="group" value="{{ old('group') }}" required>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="username" class="control-label">Username</label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input id="username" type="text" class="form-control" name="username" value="{{ old('username') }}" required>
+                                        </div>
+                                        <div class="col-md-3" style="text-align: center;">
+                                            <button type="submit" class="btn btn-success">
+                                                Promote User
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endif
