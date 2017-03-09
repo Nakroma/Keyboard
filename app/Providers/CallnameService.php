@@ -6,9 +6,9 @@
  * Time: 20:16
  */
 
-namespace laravelTest\Providers;
+namespace Keyboard\Providers;
 
-use laravelTest\Callname;
+use Keyboard\Callname;
 use Illuminate\Support\Facades\Auth;
 
 class CallnameService

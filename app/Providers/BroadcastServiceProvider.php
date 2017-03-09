@@ -1,6 +1,6 @@
 <?php
 
-namespace laravelTest\Providers;
+namespace Keyboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;

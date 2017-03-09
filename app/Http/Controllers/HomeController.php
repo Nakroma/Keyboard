@@ -1,14 +1,14 @@
 <?php
 
-namespace laravelTest\Http\Controllers;
+namespace Keyboard\Http\Controllers;
 
 use Illuminate\Http\Request;
-use laravelTest\Thread;
-use laravelTest\User;
-use laravelTest\Visit;
+use Keyboard\Thread;
+use Keyboard\User;
+use Keyboard\Visit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use laravelTest\Providers\CallnameService;
+use Keyboard\Providers\CallnameService;
 
 class HomeController extends Controller
 {

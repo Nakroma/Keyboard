@@ -1,15 +1,15 @@
 <?php
 
-namespace laravelTest\Http\Controllers;
+namespace Keyboard\Http\Controllers;
 
 use Illuminate\Http\Request;
-use laravelTest\Thread;
-use laravelTest\Post;
-use laravelTest\Callname;
-use laravelTest\Visit;
+use Keyboard\Thread;
+use Keyboard\Post;
+use Keyboard\Callname;
+use Keyboard\Visit;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use laravelTest\Providers\CallnameService;
+use Keyboard\Providers\CallnameService;
 use Golonka\BBCode\Facades\BBCodeParser;
 
 class ThreadController extends Controller

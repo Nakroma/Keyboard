@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Laravel',
+    'name' => 'Keyboard',
 
     /*
     |--------------------------------------------------------------------------
@@ -176,11 +176,11 @@ return [
         /*
          * Application Service Providers...
          */
-        laravelTest\Providers\AppServiceProvider::class,
-        laravelTest\Providers\AuthServiceProvider::class,
-        // laravelTest\Providers\BroadcastServiceProvider::class,
-        laravelTest\Providers\EventServiceProvider::class,
-        laravelTest\Providers\RouteServiceProvider::class,
+        Keyboard\Providers\AppServiceProvider::class,
+        Keyboard\Providers\AuthServiceProvider::class,
+        // Keyboard\Providers\BroadcastServiceProvider::class,
+        Keyboard\Providers\EventServiceProvider::class,
+        Keyboard\Providers\RouteServiceProvider::class,
 
     ],
 

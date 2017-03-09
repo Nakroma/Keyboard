@@ -1,8 +1,8 @@
 <?php
 
-namespace laravelTest\Http\Controllers\Auth;
+namespace Keyboard\Http\Controllers\Auth;
 
-use laravelTest\Http\Controllers\Controller;
+use Keyboard\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 

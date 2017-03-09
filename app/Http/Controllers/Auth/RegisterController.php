@@ -1,13 +1,13 @@
 <?php
 
-namespace laravelTest\Http\Controllers\Auth;
+namespace Keyboard\Http\Controllers\Auth;
 
-use laravelTest\User;
-use laravelTest\Key;
-use laravelTest\Http\Controllers\Controller;
+use Keyboard\User;
+use Keyboard\Key;
+use Keyboard\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use laravelTest\Providers\KeyGenerationService;
+use Keyboard\Providers\KeyGenerationService;
 
 class RegisterController extends Controller
 {

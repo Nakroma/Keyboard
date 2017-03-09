@@ -1,12 +1,12 @@
 <?php
 
-namespace laravelTest\Providers;
+namespace Keyboard\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
-use laravelTest\Key;
-use laravelTest\User;
+use Keyboard\Key;
+use Keyboard\User;
 
 class AppServiceProvider extends ServiceProvider
 {

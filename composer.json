@@ -20,7 +20,7 @@
             "database"
         ],
         "psr-4": {
-            "laravelTest\\": "app/"
+            "Keyboard\\": "app/"
         }
     },
     "autoload-dev": {

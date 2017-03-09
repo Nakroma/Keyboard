@@ -1,6 +1,6 @@
 <?php
 
-namespace laravelTest\Exceptions;
+namespace Keyboard\Exceptions;
 
 use Exception;
 use Illuminate\Auth\AuthenticationException;

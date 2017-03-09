@@ -1,6 +1,6 @@
 <?php
 
-namespace laravelTest;
+namespace Keyboard;
 
 use Illuminate\Database\Eloquent\Model;
 

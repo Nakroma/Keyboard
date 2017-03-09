@@ -6,9 +6,9 @@
  * Time: 20:16
  */
 
-namespace laravelTest\Providers;
+namespace Keyboard\Providers;
 
-use laravelTest\Key;
+use Keyboard\Key;
 
 class KeyGenerationService
 {

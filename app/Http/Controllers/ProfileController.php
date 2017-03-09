@@ -1,14 +1,14 @@
 <?php
 
-namespace laravelTest\Http\Controllers;
+namespace Keyboard\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use laravelTest\Key;
-use laravelTest\Callname;
-use laravelTest\User;
+use Keyboard\Key;
+use Keyboard\Callname;
+use Keyboard\User;
 use Illuminate\Support\Facades\Validator;
-use laravelTest\Providers\KeyGenerationService;
+use Keyboard\Providers\KeyGenerationService;
 
 class ProfileController extends Controller
 {

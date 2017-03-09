@@ -1,6 +1,6 @@
 <?php
 
-namespace laravelTest;
+namespace Keyboard;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
