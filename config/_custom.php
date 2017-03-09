@@ -22,6 +22,9 @@ return [
     /*
      * Permissions and groups.
      * Each of these values is greater or equal (>=).
+     * The highest group is the one you get assigned with the ADMIN_KEY.
+     * The lowest group is assigned when you ban a user.
+     * Everything under 0 automatically counts as restricted as some sort (some functions may not be available).
      */
     'groups' => [
         -1 => 'Banned',

@@ -115,6 +115,12 @@ class ThreadController extends Controller
         return back();
     }
 
+    /**
+     * Deletes a post.
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function deletePost($id)
     {
         $post = Post::where('id', $id)->first();
