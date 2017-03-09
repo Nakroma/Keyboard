@@ -112,4 +112,30 @@ class ProfileController extends Controller
 
         return back();
     }
+
+    /**
+     * Generates a certain number of keys
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function generateKey(Request $request)
+    {
+        // Validating
+        $validator = Validator::make($request->all(), [
+            'number' => 'required|integer',
+        ]);
+
+        if ($validator->fails()) {
+            return back()
+                ->withInput()
+                ->withErrors($validator);
+        }
+
+        if (Auth::user()->group >= config('_custom.permissions')['createKey']) {
+            User::where('username', $request->username)->update(['group' => $group]);
+        }
+
+        return back();
+    }
 }

@@ -7,6 +7,7 @@ use laravelTest\Key;
 use laravelTest\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use laravelTest\Providers\KeyGenerationService;
 
 class RegisterController extends Controller
 {
@@ -66,10 +67,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // Generate key
-        $raw_key = md5(microtime().rand());
-        $key = new Key;
-        $key->key_value = $raw_key;
-        $key->save();
+        $key = KeyGenerationService::generateKey();
 
         // Set old key to used
         Key::where('key_value', $data['key'])->update(['used' => true]);
