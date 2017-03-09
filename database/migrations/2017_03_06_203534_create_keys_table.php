@@ -19,7 +19,6 @@ class CreateKeysTable extends Migration
             $table->string('key_value')->unique();
             $table->boolean('used')->default(0);
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

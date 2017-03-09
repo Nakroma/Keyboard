@@ -8,6 +8,7 @@ use laravelTest\Key;
 use laravelTest\Callname;
 use laravelTest\User;
 use Illuminate\Support\Facades\Validator;
+use laravelTest\Providers\KeyGenerationService;
 
 class ProfileController extends Controller
 {
@@ -41,6 +42,7 @@ class ProfileController extends Controller
             'mod_area' => $moderationArea,
             'prm' => $prm,
             'groups' => config('_custom.groups'),
+            'key_list' => [],
         ]);
     }
 
@@ -133,7 +135,14 @@ class ProfileController extends Controller
         }
 
         if (Auth::user()->group >= config('_custom.permissions')['createKey']) {
-            User::where('username', $request->username)->update(['group' => $group]);
+            $keyArray = [];
+            for ($i = 0; $i < $request->number; $i++) {
+                $keyArray[] = KeyGenerationService::generateKey();
+            }
+
+            return view('profile', [
+                'key_list' => $keyArray,
+            ]);
         }
 
         return back();
