@@ -78,6 +78,26 @@
 
                                 </form>
                             @endif
+                            @if ($user->group >= $prm['createKey'])
+                                <form class="form-horizontal" role="form" method="POST" action="{{ url('key/generate') }}">
+                                    {{ csrf_field() }}
+
+                                    <div class="form-group" style="text-align: right;">
+                                        <div class="col-md-2 col-md-offset-6">
+                                            <label for="number" class="control-label">Number</label>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <input id="number" type="text" class="form-control" name="number" value="{{ old('number') }}" required>
+                                        </div>
+                                        <div class="col-md-3" style="text-align: center;">
+                                            <button type="submit" class="btn btn-primary">
+                                                Generate Key(s)
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            @endif
                         </div>
                     </div>
                 @endif
