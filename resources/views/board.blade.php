@@ -7,38 +7,45 @@
             <a href="/thread"><button type="button" class="btn btn-default btn-block">Create Thread</button></a>
         </div>
         <div class="col-md-8">
-
-            <!-- Display Threads -->
-            @if (count($threads) > 0)
                 <div class="panel panel-default">
                     <div class="panel-heading">Board</div>
                     <div class="panel-body">
-                        <div class="list-group">
-                            @foreach ($threads as $thread)
-                                <a href="/thread/{{ $thread->id }}" class="list-group-item">
-                                    @if ($thread->new_posts)
-                                        <span class="label label-primary">New</span>
-                                    @endif
-                                    {{ $thread->title }}<small>{{ $thread->created_at->format('Y-m-d') }}</small>
-                                </a>
-                            @endforeach
-                        </div>
+                        <!-- Display pinned threads -->
+                        @if (count($pinned) > 0)
+                            <div class="list-group">
+                                @foreach ($pinned as $thread)
+                                    <a href="/thread/{{ $thread->id }}" class="list-group-item active">
+                                        @if ($thread->new_posts)
+                                            <span class="label label-primary">New</span>
+                                        @endif
+                                        {{ $thread->title }}<small>{{ $thread->created_at->format('Y-m-d') }}</small>
+                                    </a>
+                                @endforeach
+                            </div>
+                        @endif
 
-                        <div align="center">
-                            {{ $threads->links() }}
-                        </div>
+                        <!-- Display Threads -->
+                        @if (count($threads) > 0)
+                            <div class="list-group">
+                                @foreach ($threads as $thread)
+                                    <a href="/thread/{{ $thread->id }}" class="list-group-item">
+                                        @if ($thread->new_posts)
+                                            <span class="label label-primary">New</span>
+                                        @endif
+                                        {{ $thread->title }}<small>{{ $thread->created_at->format('Y-m-d') }}</small>
+                                    </a>
+                                @endforeach
+                            </div>
 
+                            <div align="center">
+                                {{ $threads->links() }}
+                            </div>
+                        @else
+                            <div class="alert alert-danger" role="alert">No threads found</div>
+                            <div align="center">Create a thread now?</div>
+                        @endif
                     </div>
                 </div>
-            @else
-                <div class="panel panel-default">
-                    <div class="panel-heading">Board</div>
-                    <div class="panel-body">
-                        <div class="alert alert-danger" role="alert">No threads found</div>
-                        <div align="center">Create a thread now?</div>
-                    </div>
-                </div>
-            @endif
         </div>
     </div>
 </div>
