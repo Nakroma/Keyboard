@@ -41,6 +41,18 @@
                                 </div>
                             </div>
 
+                            @if (Auth::user()->group >= config('_custom.permissions')['pinnedThread'])
+                            <div class="form-group">
+                                <div class="col-md-6 col-md-offset-1">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="pinned" {{ old('pinned') ? 'checked' : '' }}> Pin Thread
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
+
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-3">
                                     <button type="submit" class="btn btn-primary btn-block">
