@@ -36,7 +36,7 @@ return [
         'deleteThread' => 1,    // Can delete threads
         'deletePost' => 1,      // Can delete posts
         'banUser' => 1,         // Can permanently ban a user (Set his group to banned)
-        'pinnedThread' => 1,    // Can create a pinned thread
+        'pinnedThread' => 1,    // Can create a pinned thread (Auto reveal as mod!)
         'revealModStatus' => 1, // Can reveal as a moderator in threads
         'promoteUser' => 2,     // Can promote or demote a user into a different group (<= that of the assigner)
         'createKey' => 2,       // Can generate new keys
