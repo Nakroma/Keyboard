@@ -23,3 +23,5 @@ A few notes about groups and permissions:
 
 If you want to remove the invite only access: Remove everything regarding keys in the register view and controller, as well as in the profile view and profile controller.  
 If you want to remove the anonymous callsigns: Simply change the `$callnames[$xyz->author]` to `$xyz->username` and remove the comments around ->username assignment in the thread controller.
+
+The entire board is styled with bootstrap, so it's pretty easy to style over it. The css is found in `public/css/`.
