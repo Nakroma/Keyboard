@@ -54,7 +54,11 @@ class ThreadController extends Controller
         $string_callnames = config('_custom.callnames');
         $callnames = [];
         foreach($raw_callnames as $raw) {
-            $callnames[$raw->author] = $string_callnames[$raw->callname];
+            if ($raw->callname >= 0) {
+                $callnames[$raw->author] = $string_callnames[$raw->callname];
+            } else {
+                $callnames[$raw->author] = $raw->custom_id;
+            }
         }
 
         // Create or update visit
