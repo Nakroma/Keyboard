@@ -20,6 +20,7 @@ class CreateCallnamesTable extends Migration
             $table->unsignedInteger('thread');  // Thread ID
             $table->integer('callname');        // Callname ID
             $table->string('custom_id')->default('');        // Custom ID if needed
+            $table->boolean('moderator')->default(false);   // If moderator status revealed or not
 
             $table->timestamps();               // Created/Updated at
         });
