@@ -13,6 +13,10 @@
                         <button type="submit" class="btn btn-danger btn-block">Delete Thread</button>
                     </form>
                 @endif
+                @if (Auth::user()->group >= config('_custom.permissions')['revealModStatus'])
+                    <br>
+                    <a href="/mod/{{ $thread->id }}"><button class="btn btn-block btn-success">Reveal Mod Status</button></a>
+                @endif
             </div>
             <div class="col-md-8">
                 <!-- Thread header -->
