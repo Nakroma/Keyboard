@@ -30,9 +30,29 @@ class HomeController extends Controller
     public function index()
     {
         // Pass threads to view
-        $threads = Thread::orderBy('last_post', 'desc')->paginate(config('_custom.threadPagination'));
+        $pinned = Thread::orderBy('last_post', 'desc')->where('pinned', true)->get();
+        $threads = Thread::orderBy('last_post', 'desc')
+            ->where('pinned', false)
+            ->paginate(config('_custom.threadPagination'));
 
         // Check if new posts are in the thread
+        $threads = $this->new_posts($threads);
+        $pinned = $this->new_posts($pinned);
+
+        return view('board', [
+            'threads' => $threads,
+            'pinned' => $pinned,
+        ]);
+    }
+
+    /**
+     * Marks threads with new posts
+     *
+     * @param $threads
+     * @return mixed
+     */
+    private function new_posts($threads)
+    {
         foreach ($threads as $th) {
             $visits = Visit::where([
                 ['author', '=', Auth::id()],
@@ -46,10 +66,7 @@ class HomeController extends Controller
                 }
             }
         }
-
-        return view('board', [
-            'threads' => $threads
-        ]);
+        return $threads;
     }
 
     /**
