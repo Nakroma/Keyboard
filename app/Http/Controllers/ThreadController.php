@@ -53,6 +53,7 @@ class ThreadController extends Controller
         $raw_callnames = Callname::where('thread', $id)->get();
         $string_callnames = config('_custom.callnames');
         $callnames = [];
+        $mod_reveal = [];
         foreach($raw_callnames as $raw) {
             // Set callname or custom id
             if ($raw->callname >= 0) {
@@ -62,6 +63,7 @@ class ThreadController extends Controller
             }
 
             // Set mod reveal
+            $mod_reveal[$raw->author] = $raw->moderator;
         }
 
         // Create or update visit
@@ -85,6 +87,7 @@ class ThreadController extends Controller
             'thread' => $thread,
             'posts' => $posts,
             'callnames' => $callnames,
+            'moderator' => $mod_reveal,
         ]);
     }
 
