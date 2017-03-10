@@ -20,6 +20,7 @@ class CreateThreadsTable extends Migration
             $table->string('title');            // Thread title
             $table->text('body');               // Content
             $table->timestamp('last_post')->useCurrent();     // Last post
+            $table->boolean('pinned')->default(false);  // If post is pinned or not
 
             $table->timestamps();               // Created/Updated at
         });
