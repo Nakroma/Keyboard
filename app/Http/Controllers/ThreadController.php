@@ -7,6 +7,7 @@ use Keyboard\Thread;
 use Keyboard\Post;
 use Keyboard\Callname;
 use Keyboard\Visit;
+use Keyboard\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Keyboard\Providers\CallnameService;
@@ -43,7 +44,10 @@ class ThreadController extends Controller
         foreach($posts as $p) {
             $p->body = htmlspecialchars($p->body);
             $p->body = BBCodeParser::parse($p->body);
+
+            //$p->username = User::where('id', $p->author)->first()->username;
         }
+        //$thread->username = User::where('id', $thread->author)->first()->username;
 
         // Create callname array
         $raw_callnames = Callname::where('thread', $id)->get();
