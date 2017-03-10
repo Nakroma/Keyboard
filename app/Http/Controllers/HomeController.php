@@ -113,7 +113,7 @@ class HomeController extends Controller
         $thread->save();
 
         // Create callname
-        CallnameService::assignCallname($thread->id);
+        CallnameService::assignCallname($thread->id, $thread->pinned);
 
         return redirect('thread/'.$thread->id);
     }

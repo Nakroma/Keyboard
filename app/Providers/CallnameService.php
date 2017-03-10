@@ -19,7 +19,7 @@ class CallnameService
      * @param $thread_id
      * @return void
      */
-    public static function assignCallname($thread_id)
+    public static function assignCallname($thread_id, $pinned = false)
     {
         $cln = uniqid();
 
@@ -47,6 +47,9 @@ class CallnameService
             $callname->custom_id = $cln;
         } else {
             $callname->callname = $cln;
+        }
+        if ($pinned) {
+            $callname->moderator = true;
         }
         $callname->save();
     }
