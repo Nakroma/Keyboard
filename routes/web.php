@@ -25,6 +25,7 @@ Route::delete('thread/delete/{id}', 'HomeController@deleteThread');
 
 /* Thread routes */
 Route::get('thread/{id}', 'ThreadController@index');
+Route::get('mod/{id}', 'ThreadController@revealModStatus');
 Route::post('post', 'ThreadController@createPost');
 Route::get('post/delete/{id}', 'ThreadController@deletePost');  // Really a delete but whatever
 

@@ -137,4 +137,15 @@ class ThreadController extends Controller
             return redirect('board');
         }
     }
+
+    /**
+     * Reveals a user as a mod
+     *
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function revealModStatus($id)
+    {
+        return redirect('thread/'.$id);
+    }
 }
