@@ -88,6 +88,11 @@ class HomeController extends Controller
         $thread->body = $request->body;
         $thread->author = Auth::id();
         $thread->last_post = date("Y-m-d H:i:s");
+        if (Auth::user()->group >= config('_custom.permissions')['pinnedThread']) {
+            if ($request->pinned == 'on') {
+                $thread->pinned = true;
+            }
+        }
         $thread->save();
 
         // Create callname
