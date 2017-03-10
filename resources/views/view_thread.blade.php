@@ -34,7 +34,7 @@
                     <div class="panel-body"> <!-- TODO: Remove this hack -->
                         @foreach ($posts as $post)
                             <div class="panel panel-default" style="margin-bottom:5px;">
-                                <div class="panel-heading"><small>{{ $callnames[$post->author] }} @if($moderator[$thread->author])<span class="label label-success">Mod</span>@endif @ {{ $post->created_at }}
+                                <div class="panel-heading"><small>{{ $callnames[$post->author] }} @if($moderator[$post->author])<span class="label label-success">Mod</span>@endif @ {{ $post->created_at }}
                                     @if (Auth::user()->group >= config('_custom.permissions')['deletePost'])
                                         <a href="/post/delete/{{ $post->id }}" class="del-post">Delete</a>
                                     @endif

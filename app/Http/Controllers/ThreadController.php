@@ -156,6 +156,13 @@ class ThreadController extends Controller
      */
     public function revealModStatus($id)
     {
+        if (Auth::user()->group >= config('_custom.permissions')['revealModStatus']) {
+            Callname::where([
+                ['thread', '=', $id],
+                ['author', '=', Auth::id()],
+            ])->update(['moderator' => true]);
+        }
+
         return redirect('thread/'.$id);
     }
 }
