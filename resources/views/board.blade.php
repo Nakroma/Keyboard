@@ -14,7 +14,8 @@
                         @if (count($pinned) > 0)
                             <div class="list-group">
                                 @foreach ($pinned as $thread)
-                                    <a href="/thread/{{ $thread->id }}" class="list-group-item active">
+                                    <a href="/thread/{{ $thread->id }}" class="list-group-item">
+                                        <span class="label label-success">Pinned</span>
                                         @if ($thread->new_posts)
                                             <span class="label label-primary">New</span>
                                         @endif
