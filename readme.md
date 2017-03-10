@@ -1,3 +1,4 @@
+[![Latest Version](https://img.shields.io/github/release/nakroma/keyboard.svg?style=flat-square)](https://github.com/nakroma/keyboard/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 ## Description
