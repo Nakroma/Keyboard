@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <a href="/board"><button type="button" class="btn btn-default btn-block">Home</button></a>
+                <a href="{{ url('board') }}"><button type="button" class="btn btn-default btn-block">Home</button></a>
                 @if ((Auth::id() == $thread->author) || (Auth::user()->group >= config('_custom.permissions')['deleteThread']))
                     <br>
                     <form action="{{ url('thread/delete/'.$thread->id) }}" method="POST">
@@ -15,7 +15,7 @@
                 @endif
                 @if (Auth::user()->group >= config('_custom.permissions')['revealModStatus'])
                     <br>
-                    <a href="/mod/{{ $thread->id }}"><button class="btn btn-block btn-success">Reveal Mod Status</button></a>
+                    <a href="{{ url('mod/'.$thread->id) }}"><button class="btn btn-block btn-success">Reveal Mod Status</button></a>
                 @endif
             </div>
             <div class="col-md-8">
@@ -36,7 +36,7 @@
                             <div class="panel panel-default" style="margin-bottom:5px;">
                                 <div class="panel-heading"><small>{{ $callnames[$post->author] }} @if($moderator[$post->author])<span class="label label-success">Mod</span>@endif @ {{ $post->created_at }}
                                     @if (Auth::user()->group >= config('_custom.permissions')['deletePost'])
-                                        <a href="/post/delete/{{ $post->id }}" class="del-post">Delete</a>
+                                        <a href="{{ url('post/delete/'.$post->id) }}" class="del-post">Delete</a>
                                     @endif
                                     </small></div>
                                 <div class="panel-body">

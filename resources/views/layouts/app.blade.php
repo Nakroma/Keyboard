@@ -63,9 +63,9 @@
                                     <li>
                                         <a href="{{ url('profile') }}">Profile</a>
                                     </li>
-                                    <li>
+                                    <!--<li>
                                         <a href="">Something else</a>
-                                    </li>
+                                    </li>-->
 
                                     <li role="separator" class="divider"></li>
                                     <li>

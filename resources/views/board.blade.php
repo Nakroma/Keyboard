@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-2">
-            <a href="/thread"><button type="button" class="btn btn-default btn-block">Create Thread</button></a>
+            <a href="{{ url('thread') }}"><button type="button" class="btn btn-default btn-block">Create Thread</button></a>
         </div>
         <div class="col-md-8">
                 <div class="panel panel-default">
@@ -14,7 +14,7 @@
                         @if (count($pinned) > 0)
                             <div class="list-group">
                                 @foreach ($pinned as $thread)
-                                    <a href="/thread/{{ $thread->id }}" class="list-group-item">
+                                    <a href="{{ url('thread/'.$thread->id) }}" class="list-group-item">
                                         <span class="label label-success">Pinned</span>
                                         @if ($thread->new_posts)
                                             <span class="label label-primary">New</span>
@@ -29,7 +29,7 @@
                         @if (count($threads) > 0)
                             <div class="list-group">
                                 @foreach ($threads as $thread)
-                                    <a href="/thread/{{ $thread->id }}" class="list-group-item">
+                                    <a href="{{ url('thread/'.$thread->id) }}" class="list-group-item">
                                         @if ($thread->new_posts)
                                             <span class="label label-primary">New</span>
                                         @endif
