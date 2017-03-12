@@ -29,9 +29,11 @@ The entire board is styled with bootstrap, so it's pretty easy to style over it.
 5. Run `php artisan migrate`
 
 **Development**
+
 6. Run `php artisan serve`
 
 **Production**
+
 6. Copy the contents of `public/` where you want to serve the url
 7. Change the two bootstrap paths in `index.php` to the correct path
 8. Make `storage/` writable with `chmod -R o+w storage`
