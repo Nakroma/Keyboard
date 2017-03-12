@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-2">
-                <a href="/board"><button type="button" class="btn btn-default btn-block">Home</button></a>
+                <a href="{{ url('board') }}"><button type="button" class="btn btn-default btn-block">Home</button></a>
             </div>
             <div class="col-md-8">
                 <div class="panel panel-default">

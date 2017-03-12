@@ -42,3 +42,11 @@ The entire board is styled with bootstrap, so it's pretty easy to style over it.
 6. Run `php composer.phar dumpautoload -o`
 7. Run `php artisan config:cache`
 8. Run `php artisan route:cache`
+
+#### Updating
+
+1. Pull the newest version via git (make sure to backup your configs and changes you made)
+2. Run `php artisan migrate`
+3. Run `php artisan config:cache`
+4. Run `php artisan route:cache`
+5. Copy the content of `public/` to your root if some of the files have changed
