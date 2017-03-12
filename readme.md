@@ -30,15 +30,15 @@ The entire board is styled with bootstrap, so it's pretty easy to style over it.
 
 **Development**
 
-6. Run `php artisan serve`
+1. Run `php artisan serve`
 
 **Production**
 
-6. Copy the contents of `public/` where you want to serve the url
-7. Change the two bootstrap paths in `index.php` to the correct path
-8. Make `storage/` writable with `chmod -R o+w storage`
-9. Get composer in your project root with `curl -s https://getcomposer.org/installer | php`
-10. Run `php composer.phar install`
-11. Run `php composer.phar dumpautoload -o`
-12. Run `php artisan config:cache`
-13. Run `php artisan route:cache`
+1. Copy the contents of `public/` where you want to serve the url
+2. Change the two bootstrap paths in `index.php` to the correct path
+3. Make `storage/` writable with `chmod -R o+w storage`
+4. Get composer in your project root with `curl -s https://getcomposer.org/installer | php`
+5. Run `php composer.phar install`
+6. Run `php composer.phar dumpautoload -o`
+7. Run `php artisan config:cache`
+8. Run `php artisan route:cache`
