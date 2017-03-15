@@ -9,6 +9,7 @@
 namespace Keyboard\Providers;
 
 use Keyboard\Key;
+use Nakroma\Cereal;
 
 class KeyGenerationService
 {
@@ -20,9 +21,8 @@ class KeyGenerationService
     public static function generateKey()
     {
         // Generate key
-        $raw_key = md5(microtime().rand());
         $key = new Key;
-        $key->key_value = $raw_key;
+        $key->key_value = Cereal::generate();
         $key->save();
 
         return $key;
